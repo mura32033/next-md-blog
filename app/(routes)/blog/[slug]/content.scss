@@ -1,0 +1,49 @@
+.blog-content {
+  p {
+    @apply mt-4 leading-8;
+  }
+  
+  h1 {
+    @apply text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl;
+  }
+  
+  h2 {
+    @apply mt-8 text-2xl font-bold tracking-tight text-gray-900;
+  }
+  
+  h3 {
+    @apply mt-6 text-xl font-bold tracking-tight text-gray-900;
+  }
+  
+  h4 {
+    @apply mt-6 text-lg font-bold tracking-tight text-gray-900;
+  }
+  
+  ul,
+  ol {
+    @apply mt-6 list-disc ml-8;
+  }
+  
+  li {
+    @apply mt-2;
+  }
+  
+  a {
+    @apply text-indigo-600;
+  }
+
+  table {
+    @apply w-full mt-6;
+    thead {
+      @apply bg-slate-300 text-slate-800;
+    }
+    tbody {
+      tr {
+        @apply border-b border-slate-300;
+      }
+    }
+    td {
+      @apply py-2 px-4;
+    }
+  }
+}
