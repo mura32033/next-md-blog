@@ -4,6 +4,8 @@ import matter from 'gray-matter';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkHtml from 'remark-html';
+import remarkGfm from 'remark-gfm';
+import './content.scss';
 
 // ブログ記事ページ
 export default async function BlogPost({ params }) {
@@ -14,14 +16,17 @@ export default async function BlogPost({ params }) {
   // ファイルの中身を取得
   const fileContents = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContents);
-  const title = data.title; // 記事のタイトル
-  const processedContent = await unified().use(remarkParse).use(remarkHtml).process(content);
+  const processedContent = await unified().use(remarkParse).use(remarkHtml).use(remarkGfm).process(content);
   const contentHtml = processedContent.toString(); // 記事の本文をHTMLに変換
 
   return (
-    <div>
-      <h1>{title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: contentHtml }}></div>
+    <div className="bg-white px-6 py-32 lg:px-8">
+      <div className="mx-auto max-w-3xl text-base leading-7 text-gray-700">
+        <div
+          className="mt-6 blog-content"
+          dangerouslySetInnerHTML={{ __html: contentHtml }}
+        ></div>
+      </div>
     </div>
   );
 }
