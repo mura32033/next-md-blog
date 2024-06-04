@@ -8,7 +8,7 @@ import remarkGfm from 'remark-gfm';
 import './content.scss';
 
 // ブログ記事ページ
-export default async function BlogPost({ params }) {
+export default async function BlogPost({ params }: { params: any }) {
   // URLのパラメータから該当するファイル名を取得 (今回は hello-world)
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'content', `${slug}.md`);
