@@ -1,4 +1,4 @@
-export default async function BlogTagPage() {
+export default async function generateStaticParams() {
   return (
     <div>
       <h1>Hello</h1>
