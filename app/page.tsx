@@ -16,7 +16,7 @@ export default async function Blogs() {
       const filePath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data } = matter(fileContents);
-      const title = matter(fileContents)
+      const title : String = matter(fileContents)
         .content.split("\n")[1]
         .split("#")[1]
         .trim();
@@ -24,9 +24,9 @@ export default async function Blogs() {
       // slugとinfo(title, date, description)を取得
       return {
         slug: fileName.replace(".md", ""),
+        title,
         info: {
           ...data,
-          title,
         },
       };
     })
@@ -50,7 +50,7 @@ export default async function Blogs() {
               src={`${post.info.cover}`}
               width={500}
               height={500}
-              alt={`${post.info.title}のサムネイル画像`}
+              alt={`${post.title}のサムネイル画像`}
               className="w-full h-36 object-cover"
             />
           </Link>
@@ -69,7 +69,7 @@ export default async function Blogs() {
               ) : null}
             </div>
             <Link href={`/blog/${post.slug}`}>
-              <h2 className="mt-4 text-2xl">{post.info.title}</h2>
+              <h2 className="mt-4 text-2xl">{post.title}</h2>
             </Link>
           </div>
         </div>
