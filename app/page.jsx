@@ -59,14 +59,6 @@ export default async function Blogs() {
               <time dateTime={post.info.date} className="text-sm font-normal">
                 {post.info.date}
               </time>
-              {post.info.tags ? (
-                <Link
-                  href={`/blog/tag/${post.info.tags}`}
-                  className="ml-auto px-2 py-1 text-xs border border-slate-200 rounded-full hover:border-slate-300 hover:bg-slate-200 font-normal hover:font-bold"
-                >
-                  <span>{post.info.tags}</span>
-                </Link>
-              ) : null}
             </div>
             <Link href={`/blog/${post.slug}`}>
               <h2 className="mt-4 text-2xl">{post.title}</h2>
