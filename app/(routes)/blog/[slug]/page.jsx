@@ -7,6 +7,22 @@ import remarkHtml from 'remark-html';
 import remarkGfm from 'remark-gfm';
 import './content.scss';
 
+export async function getStaticPaths() {
+  const postsDirectory = path.join(process.cwd(), 'content');
+  const fileNames = fs.readdirSync(postsDirectory);
+
+  return {
+    paths: fileNames.map((fileName) => {
+      return {
+        params: {
+          slug: fileName.replace('.md', ''),
+        },
+      };
+    }),
+    fallback: false,
+  };
+}
+
 // ブログ記事ページ
 export default async function BlogPost({ params }) {
   // URLのパラメータから該当するファイル名を取得 (今回は hello-world)
