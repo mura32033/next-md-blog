@@ -7,7 +7,7 @@ import remarkHtml from 'remark-html';
 import remarkGfm from 'remark-gfm';
 import './content.scss';
 
-export async function generateStaticParams({ params }: { params: any }) {
+export async function generateStaticParams({ params }) {
   const { slug } = params;
   return { paths: [{ params: { slug } }], fallback: false };
 }
