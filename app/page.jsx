@@ -16,7 +16,7 @@ export default async function Blogs() {
       const filePath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data } = matter(fileContents);
-      const title : String = matter(fileContents)
+      const title = matter(fileContents)
         .content.split("\n")[1]
         .split("#")[1]
         .trim();

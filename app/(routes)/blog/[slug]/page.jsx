@@ -7,7 +7,8 @@ import remarkHtml from 'remark-html';
 import remarkGfm from 'remark-gfm';
 import './content.scss';
 
-export async function generateStaticParams({ params }) {
+// ブログ記事ページ
+export default async function BlogPost({ params }) {
   // URLのパラメータから該当するファイル名を取得 (今回は hello-world)
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'content', `${slug}.md`);
@@ -17,13 +18,6 @@ export async function generateStaticParams({ params }) {
   const { data, content } = matter(fileContents);
   const processedContent = await unified().use(remarkParse).use(remarkHtml).use(remarkGfm).process(content);
   const contentHtml = processedContent.toString(); // 記事の本文をHTMLに変換
-
-  return contentHtml;
-}
-
-// ブログ記事ページ
-export default async function Blog({ params }) {
-  const contentHtml = await generateStaticParams({ params });
 
   return (
     <div className="bg-white px-6 py-32 lg:px-8">
