@@ -1,4 +1,4 @@
-export default async function generateStaticParams() {
+export default async function Tag() {
   return (
     <div>
       <h1>Hello</h1>

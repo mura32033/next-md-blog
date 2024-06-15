@@ -7,8 +7,13 @@ import remarkHtml from 'remark-html';
 import remarkGfm from 'remark-gfm';
 import './content.scss';
 
+export async function generateStaticParams({ params }: { params: any }) {
+  const { slug } = params;
+  return { paths: [{ params: { slug } }], fallback: false };
+}
+
 // ブログ記事ページ
-export default async function generateStaticParams({ params }: { params: any }) {
+export default async function Blog({ params }) {
   // URLのパラメータから該当するファイル名を取得 (今回は hello-world)
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'content', `${slug}.md`);
